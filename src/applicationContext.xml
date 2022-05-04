@@ -12,20 +12,19 @@
 ]>
 
 <beans>
-    <bean id="page" class="com.atguigu.myssm.myspringmvc.PageController"/>
+    <bean id="page" class="myssm.myspringmvc.PageController"/>
 
     <!-- DAO -->
-    <bean id="userDAO" class="com.atguigu.book.dao.impl.UserDAOImpl"/>
+    <bean id="userDAO" class="book.dao.impl.UserDAOImpl"/>
 
     <!-- service -->
-    <bean id="userService" class="com.atguigu.book.service.impl.UserServiceImpl">
+    <bean id="userService" class="book.service.impl.UserServiceImpl">
         <property name="userDAO" ref="userDAO"/>
     </bean>
 
     <!-- controller -->
-    <bean id="user" class="com.atguigu.book.controller.UserController">
+    <bean id="user" class="book.controller.UserController">
         <property name="userService" ref="userService"/>
     </bean>
-
 
 </beans>
