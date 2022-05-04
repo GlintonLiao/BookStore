@@ -5,7 +5,7 @@ public class CartItem {
     private Integer id ;
     private Book book ;
     private Integer buyCount ;
-    private User uesr ;
+    private User userBean ;
 
     public CartItem(){}
 
@@ -37,11 +37,11 @@ public class CartItem {
         this.buyCount = buyCount;
     }
 
-    public User getUesr() {
-        return uesr;
+    public User getUserBean() {
+        return userBean;
     }
 
-    public void setUesr(User uesr) {
-        this.uesr = uesr;
+    public void setUserBean(User userBean) {
+        this.userBean = userBean;
     }
 }
