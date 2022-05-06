@@ -10,7 +10,7 @@ import java.util.List;
 public class CartItemDAOImpl extends BaseDAO<CartItem> implements CartItemDAO {
     @Override
     public void addCartItem(CartItem cartItem) {
-        executeQuery("INSERT INTO t_cart_item values(0, ?, ?, ?)", cartItem.getBook().getId(), cartItem.getBuyCount(), cartItem.getUserBean().getId());
+        executeUpdate("INSERT INTO t_cart_item values(0, ?, ?, ?)", cartItem.getBook().getId(), cartItem.getBuyCount(), cartItem.getUserBean().getId());
     }
 
     @Override

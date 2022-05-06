@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CartServiceImpl implements CartItemService {
+public class CartItemServiceImpl implements CartItemService {
 
     private CartItemDAO cartItemDAO;
     private BookService bookService;
