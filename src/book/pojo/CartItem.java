@@ -13,6 +13,17 @@ public class CartItem {
         this.id = id;
     }
 
+    public CartItem(Integer id, Integer buyCount) {
+        this.id = id;
+        this.buyCount = buyCount;
+    }
+
+    public CartItem(Book book, Integer buyCount, User userBean) {
+        this.book = book;
+        this.buyCount = buyCount;
+        this.userBean = userBean;
+    }
+
     public Integer getId() {
         return id;
     }
