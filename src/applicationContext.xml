@@ -18,6 +18,8 @@
     <bean id="userDAO" class="book.dao.impl.UserDAOImpl"/>
     <bean id="bookDAO" class="book.dao.impl.BookDAOImpl"/>
     <bean id="cartItemDAO" class="book.dao.impl.CartItemDAOImpl"/>
+    <bean id="orderDAO" class="book.dao.impl.OrderDAOImpl"/>
+    <bean id="orderItemDAO" class="book.dao.impl.OrderItemDAOImpl"/>
 
     <!-- service -->
     <bean id="userService" class="book.service.impl.UserServiceImpl">
@@ -30,6 +32,11 @@
         <property name="cartItemDAO" ref="cartItemDAO"/>
         <property name="bookService" ref="bookService"/>
     </bean>
+    <bean id="orderService" class="book.service.impl.OrderServiceImpl">
+        <property name="orderDAO" ref="orderDAO"/>
+        <property name="orderItemDAO" ref="orderItemDAO"/>
+        <property name="cartItemDAO" ref="cartItemDAO"/>
+    </bean>
 
     <!-- controller -->
     <bean id="user" class="book.controller.UserController">
@@ -41,6 +48,9 @@
     </bean>
     <bean id="cart" class="book.controller.CartController">
         <property name="cartItemService" ref="cartItemService"/>
+    </bean>
+    <bean id="order" class="book.controller.OrderController">
+        <property name="orderService" ref="orderService"/>
     </bean>
 
 </beans>

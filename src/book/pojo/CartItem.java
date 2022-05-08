@@ -1,11 +1,14 @@
 package book.pojo;
 
+import java.math.BigDecimal;
+
 //我们应该还需要设计一个Cart类，代表购物车这个实体
 public class CartItem {
     private Integer id ;
     private Book book ;
     private Integer buyCount ;
     private User userBean ;
+    private Double xj;
 
     public CartItem(){}
 
@@ -55,4 +58,14 @@ public class CartItem {
     public void setUserBean(User userBean) {
         this.userBean = userBean;
     }
+
+    // 转化精度
+    public Double getXj() {
+        BigDecimal bigDecimalPrice = new BigDecimal("" + getBook().getPrice());
+        BigDecimal bigDecimalBuyCount = new BigDecimal("" + buyCount);
+        BigDecimal bigDecimalXJ = bigDecimalPrice.multiply(bigDecimalBuyCount);
+        xj = bigDecimalXJ.doubleValue();
+        return xj;
+    }
+
 }

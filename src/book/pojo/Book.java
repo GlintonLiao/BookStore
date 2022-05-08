@@ -6,9 +6,9 @@ public class Book {
     private String bookName ;
     private Double price ;
     private String author ;
-    private Integer saleCount ;
-    private Integer bookCount ;
-    private Integer bookStatus = 0 ;
+    private Integer saleCount ; // 销量
+    private Integer bookCount ; // 库存
+    private Integer bookStatus = 0 ; // 0 正常，-1 无效
 
     public Book(){}
 
