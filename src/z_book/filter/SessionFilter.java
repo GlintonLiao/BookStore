@@ -10,11 +10,12 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-@WebFilter(urlPatterns = {"*.do","*.html"},
-        initParams = {
-                @WebInitParam(name = "bai",
-                        value = "/page.do?operate=page&page=user/login,/user.do?null")
-        })
+//@WebFilter(urlPatterns = {"*.do","*.html"},
+//        initParams = {
+//                @WebInitParam(name = "bai",
+//                        value = "/page.do?operate=page&page=user/login,/user.do?null")
+//        })
+
 public class SessionFilter implements Filter {
 
     List<String> baiList = null ;

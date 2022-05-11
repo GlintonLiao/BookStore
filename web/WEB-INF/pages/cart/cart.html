@@ -7,7 +7,10 @@
   <link rel="stylesheet" th:href="@{/static/css/minireset.css}" />
   <link rel="stylesheet" th:href="@{/static/css/common.css}" />
   <link rel="stylesheet" th:href="@{/static/css/cart.css}" />
+  <script language="JavaScript" th:src="@{/static/script/vue.js}"></script>
+  <script language="JavaScript" th:src="@{/static/script/axios.min.js}"></script>
   <script language="JavaScript" th:src="@{/static/script/cart.js}"></script>
+  <base th:href="@{/}">
 </head>
 <body>
 <div class="header">
@@ -16,7 +19,7 @@
       <a th:href="@{/index.html}">
         <img th:src="@{/static/img/logo.gif}" alt=""
         /></a>
-      <h1>我的购物车</h1>
+      <h1>我的购物车1</h1>
     </div>
     <div class="header-right">
       <h3>欢迎<span th:text="${session.currUser.uname}">张总</span>光临尚硅谷书城</h3>
@@ -28,7 +31,7 @@
     </div>
   </div>
 </div>
-<div class="list">
+<div class="list" id="cart_div">
   <div class="w">
     <table>
       <thead>
@@ -43,19 +46,20 @@
       </tr>
       </thead>
       <tbody>
-      <tr th:each="cartItem : ${session.currUser.cart.cartItemMap.values()}">
+      <tr v-for="cartItem in cart.cartItemMap">
         <td>
-          <img th:src="@{|/static/uploads/${cartItem.book.bookImg}|}" alt="" />
+          <img v-bind:src="'static/uploads/'+cartItem.book.bookImg" alt="" />
         </td>
-        <td th:text="${cartItem.book.bookName}">活着</td>
+        <td>{{cartItem.book.bookName}}</td>
+
         <td>
-          <span class="count" th:onclick="|editCart(${cartItem.id} , ${cartItem.buyCount - 1})|">-</span>
-          <input class="count-num" type="text" value="1" th:value="${cartItem.buyCount}"/>
-          <span class="count" th:onclick="|editCart(${cartItem.id} , ${cartItem.buyCount + 1})|">+</span>
+          <span class="count" @click="editCart(cartItem.id,cartItem.buyCount-1)">-</span>
+          <input class="count-num" type="text" value="1" v-bind:value="cartItem.buyCount"/>
+          <span class="count" @click="editCart(cartItem.id,cartItem.buyCount+1)">+</span>
         </td>
-        <td th:text="${cartItem.book.price}">36.8</td>
-        <td th:text="${cartItem.xj}">36.8</td>
-        <td><a href="">删除123</a></td>
+        <td>{{cartItem.book.price}}</td>
+        <td>{{cartItem.xj}}</td>
+        <td><a href="">删除</a></td>
       </tr>
       </tbody>
     </table>
@@ -65,8 +69,8 @@
         <a href="#">继续购物</a>
       </div>
       <div class="footer-right">
-        <div>共<span th:text="${session.currUser.cart.totalBookCount}">3</span>件商品</div>
-        <div class="total-price">总金额<span th:text="${session.currUser.cart.totalMoney}">99.9</span>元</div>
+        <div>共<span>{{cart.totalBookCount}}</span>件商品</div>
+        <div class="total-price">总金额<span>{{cart.totalMoney}}</span>元</div>
         <a class="pay" th:href="@{/order.do(operate='checkout')}">去结账</a>
       </div>
     </div>
@@ -78,19 +82,19 @@
       <ul>
         <li>
           <a href="">
-            <img src="../../static/img/bottom1.png" alt="" />
+            <img src="static/img/bottom1.png" alt="" />
             <span>大咖级讲师亲自授课</span>
           </a>
         </li>
         <li>
           <a href="">
-            <img src="../../static/img/bottom.png" alt="" />
+            <img src="static/img/bottom.png" alt="" />
             <span>课程为学员成长持续赋能</span>
           </a>
         </li>
         <li>
           <a href="">
-            <img src="../../static/img/bottom2.png" alt="" />
+            <img src="static/img/bottom2.png" alt="" />
             <span>学员真是情况大公开</span>
           </a>
         </li>
